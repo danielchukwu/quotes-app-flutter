@@ -22,7 +22,39 @@ class _QuoteListState extends State<QuoteList> {
     Quote('kobe bryant', 'Love your family, work super hard, live your passion')
   ];
 
-  Widget quoteCard(quote) {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        backgroundColor: Colors.grey[200],
+        // HEADER
+        appBar: AppBar(
+          title: const Text(
+            'Awesome Quotes',
+            style: TextStyle(color: Color.fromARGB(255, 36, 36, 36)),
+          ),
+          centerTitle: true,
+          backgroundColor: Colors.grey[100],
+          elevation: 0,
+        ),
+
+        // BODY
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: quotes.map((quote) => QuoteCard(quote: quote)).toList(),
+        ));
+  }
+}
+
+class QuoteCard extends StatelessWidget {
+  const QuoteCard({
+    Key? key,
+    required this.quote,
+  }) : super(key: key);
+
+  final quote;
+
+  @override
+  Widget build(BuildContext context) {
     return Card(
       // color: Colors.grey[100],
       elevation: 0.1,
@@ -52,27 +84,5 @@ class _QuoteListState extends State<QuoteList> {
         ),
       ),
     );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        backgroundColor: Colors.grey[200],
-        // HEADER
-        appBar: AppBar(
-          title: const Text(
-            'Awesome Quotes',
-            style: TextStyle(color: Color.fromARGB(255, 36, 36, 36)),
-          ),
-          centerTitle: true,
-          backgroundColor: Colors.grey[100],
-          elevation: 0,
-        ),
-
-        // BODY
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: quotes.map((quote) => quoteCard(quote)).toList(),
-        ));
   }
 }
