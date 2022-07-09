@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'quote.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -15,10 +16,10 @@ class QuoteList extends StatefulWidget {
 }
 
 class _QuoteListState extends State<QuoteList> {
-  List<String> quotes = [
-    'opportunities don\'t happen, you create',
-    'it\'s not late to be what you might have been',
-    'Love your family, work super hard, live your passion',
+  List<Quote> quotes = [
+    Quote('john kindle', 'opportunities don\'t happen, you create'),
+    Quote('nathan robinson', 'it\'s not late to be what you might have been'),
+    Quote('kobe bryant', 'Love your family, work super hard, live your passion')
   ];
 
   @override
@@ -38,7 +39,10 @@ class _QuoteListState extends State<QuoteList> {
         // BODY
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: quotes.map((quote) => Text(quote)).toList(),
+          children: quotes
+              .map((quote) =>
+                  Text('${quote.text}   -   Author: ${quote.author}'))
+              .toList(),
         ));
   }
 }
